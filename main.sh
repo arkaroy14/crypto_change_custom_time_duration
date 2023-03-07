@@ -1,6 +1,9 @@
 #!/bin/sh
 #INSTALL JQ FIRST
 sudo apt install jq
+
+rm -rf text
+rm -rf json
 mkdir text
 mkdir json
 curl "https://api.coinmarketcap.com/data-api/v3/map/all?listing_status=active%2Cinactive%2Cuntracked&limit=10000&start=1" --output 'json/all.json'
