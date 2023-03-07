@@ -27,8 +27,22 @@ curl -s "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/historical?id=
 
 #GRABBING START DATE(12 MAY) LOWEST VALUE
 lw=$(jq -r .data.quotes[0].quote.low "json/$nm.json")
+#GRABBING START DATE(12 MAY) HIGHEST VALUE
+#lw=$(jq -r .data.quotes[0].quote.high "json/$nm.json")
+#GRABBING START DATE(12 MAY) DAILY CLOSE VALUE
+#lw=$(jq -r .data.quotes[0].quote.close "json/$nm.json")
+#GRABBING START DATE(12 MAY) OPEN VALUE
+#lw=$(jq -r .data.quotes[0].quote.open "json/$nm.json")
+
+
 #GRABBING END DATE(28 JUNE) DAILY CLOSE VALUE
 cl=$(jq -r '.data.quotes[-1].quote.close' "json/$nm.json")
+#GRABBING END DATE(28 JUNE) HIGHEST VALUE
+#cl=$(jq -r .data.quotes[-1].quote.high "json/$nm.json")
+#GRABBING END DATE(28 JUNE) DAILY CLOSE VALUE
+#cl=$(jq -r .data.quotes[-1].quote.close "json/$nm.json")
+#GRABBING END DATE(28 JUNE) OPEN VALUE
+#cl=$(jq -r .data.quotes[-1].quote.open "json/$nm.json")
 
 #CACULATE DIFF OF START DATE LOW TO END DATE DAILY CLOSE IN PERCENTAGE
 mn=$(echo "$lw" "$cl" | awk '{print ($1-$2)/$1*100}')
